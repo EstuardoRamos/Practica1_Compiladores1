@@ -293,7 +293,7 @@ class CUP$Sintactico$actions {
           case 6: // s1 ::= BARRAS LLAVE_ABRE s3 LLAVE_CIERRA 
             {
               Object RESULT =null;
-		 System.out.println("Gramatica aceptada"); graficasBarraCorrec.add(graficaBarra); 
+		 System.out.println("Gramatica aceptada ES UNA GRAFICA DE BARRA"); graficasBarraCorrec.add(graficaBarra); 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("s1",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -302,7 +302,7 @@ class CUP$Sintactico$actions {
           case 7: // s1 ::= PIE LLAVE_ABRE s2 LLAVE_CIERRA 
             {
               Object RESULT =null;
-		 System.out.println("Gramatica aceptada"); 
+		 System.out.println("Gramatica aceptada ES UNA GRAFIC ADE PIE"); 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("s1",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -380,7 +380,7 @@ class CUP$Sintactico$actions {
 		int xleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
 		int xright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
 		String x = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-		 graficaBarra.agregarEjeX(x);  
+
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("s8",8, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -392,7 +392,7 @@ class CUP$Sintactico$actions {
 		int xleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).left;
 		int xright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).right;
 		String x = (String)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).value;
-		 graficaBarra.agregarEjeX(x);  
+
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("s8",8, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -422,7 +422,7 @@ class CUP$Sintactico$actions {
 		int nleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
 		int nright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
 		Object n = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-		 graficaBarra.agregarEjeY(n); 
+
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("s9",9, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -434,7 +434,7 @@ class CUP$Sintactico$actions {
 		int nleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).left;
 		int nright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).right;
 		Object n = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).value;
-		 graficaBarra.agregarEjeY(n); 
+
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("s9",9, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -554,6 +554,9 @@ class CUP$Sintactico$actions {
           case 33: // numero ::= DECIMAL 
             {
               Object RESULT =null;
+		int nleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
+		int nright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
+		double n = (double)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
 		 RESULT = n; 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("numero",18, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
