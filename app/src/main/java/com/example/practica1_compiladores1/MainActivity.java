@@ -3,7 +3,6 @@ package com.example.practica1_compiladores1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -47,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
             // Aqui ustedes manejan de forma correcta el error.
         }
+        //Toast.makeText(getApplicationContext(), "grafica aceptada", 3000);
 
     }
 

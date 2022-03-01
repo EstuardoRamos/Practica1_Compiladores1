@@ -184,22 +184,22 @@ public class CounterLexer implements Scanner {
     "\1\0\1\21\74\0\1\44\60\0\1\45\63\0\1\46"+
     "\63\0\1\47\57\0\1\50\3\0\1\51\55\0\1\52"+
     "\7\0\1\53\2\0\1\54\44\0\1\55\3\0\1\56"+
-    "\57\0\1\57\50\0\1\60\32\0\1\61\11\0\1\42"+
-    "\3\0\6\42\2\0\23\42\22\0\1\62\110\0\1\63"+
-    "\54\0\1\64\54\0\1\65\57\0\1\66\60\0\1\67"+
-    "\71\0\1\70\47\0\1\71\62\0\1\72\71\0\1\73"+
-    "\54\0\1\74\3\0\1\75\60\0\1\76\47\0\1\77"+
-    "\62\0\1\100\65\0\1\101\62\0\1\102\43\0\1\103"+
-    "\60\0\1\104\100\0\1\105\1\106\51\0\1\107\61\0"+
-    "\1\110\55\0\1\111\66\0\1\112\41\0\1\113\74\0"+
-    "\1\114\55\0\1\115\47\0\1\116\65\0\1\117\72\0"+
-    "\1\120\44\0\1\121\74\0\1\122\41\0\1\123\67\0"+
-    "\1\124\60\0\1\125\65\0\1\126\61\0\1\127\45\0"+
-    "\1\130\74\0\1\131\52\0\1\132\53\0\1\133\66\0"+
-    "\1\134\52\0\1\135\55\0\1\136\60\0\1\137\76\0"+
-    "\1\140\60\0\1\141\57\0\1\142\45\0\1\143\72\0"+
-    "\1\144\44\0\1\145\60\0\1\146\66\0\1\147\67\0"+
-    "\1\150\46\0\1\151\21\0";
+    "\57\0\1\57\50\0\1\60\31\0\1\42\1\61\11\0"+
+    "\1\42\3\0\6\42\2\0\23\42\22\0\1\62\110\0"+
+    "\1\63\54\0\1\64\54\0\1\65\57\0\1\66\60\0"+
+    "\1\67\71\0\1\70\47\0\1\71\62\0\1\72\71\0"+
+    "\1\73\54\0\1\74\3\0\1\75\60\0\1\76\47\0"+
+    "\1\77\62\0\1\100\65\0\1\101\62\0\1\102\43\0"+
+    "\1\103\60\0\1\104\100\0\1\105\1\106\51\0\1\107"+
+    "\61\0\1\110\55\0\1\111\66\0\1\112\41\0\1\113"+
+    "\74\0\1\114\55\0\1\115\47\0\1\116\65\0\1\117"+
+    "\72\0\1\120\44\0\1\121\74\0\1\122\41\0\1\123"+
+    "\67\0\1\124\60\0\1\125\65\0\1\126\61\0\1\127"+
+    "\45\0\1\130\74\0\1\131\52\0\1\132\53\0\1\133"+
+    "\66\0\1\134\52\0\1\135\55\0\1\136\60\0\1\137"+
+    "\76\0\1\140\60\0\1\141\57\0\1\142\45\0\1\143"+
+    "\72\0\1\144\44\0\1\145\60\0\1\146\66\0\1\147"+
+    "\67\0\1\150\46\0\1\151\21\0";
 
   private static int [] zzUnpackTrans() {
     int [] result = new int[3577];
@@ -758,12 +758,12 @@ public class CounterLexer implements Scanner {
             // fall through
           case 39: break;
           case 5:
-            { return new Symbol(sym.MULTIPLICACION, yyline + 1, yycolumn + 1);
+            { return new Symbol(sym.MULTIPLICACION, yyline + 1, yycolumn + 1, yytext());
             }
             // fall through
           case 40: break;
           case 6:
-            { return new Symbol(sym.SUMA, yyline + 1, yycolumn + 1);
+            { return new Symbol(sym.SUMA, yyline + 1, yycolumn + 1, yytext());
             }
             // fall through
           case 41: break;
@@ -773,7 +773,7 @@ public class CounterLexer implements Scanner {
             // fall through
           case 42: break;
           case 8:
-            { return new Symbol(sym.RESTA, yyline + 1, yycolumn + 1);
+            { return new Symbol(sym.RESTA, yyline + 1, yycolumn + 1, yytext());
             }
             // fall through
           case 43: break;
@@ -828,12 +828,12 @@ public class CounterLexer implements Scanner {
             // fall through
           case 53: break;
           case 19:
-            { return new Symbol(sym.STRING, yyline + 1, yycolumn + 1);
+            { return new Symbol(sym.STRING, yyline + 1, yycolumn + 1, yytext());
             }
             // fall through
           case 54: break;
           case 20:
-            { return new Symbol(sym.DECIMAL, yyline + 1, yycolumn + 1);
+            { return new Symbol(sym.DECIMAL, yyline + 1, yycolumn + 1, new Integer(yytext()));
             }
             // fall through
           case 55: break;
@@ -883,7 +883,7 @@ public class CounterLexer implements Scanner {
             // fall through
           case 64: break;
           case 30:
-            { return new Symbol(sym.TITULO, yyline + 1, yycolumn + 1);
+            { return new Symbol(sym.TITULO, yyline + 1, yycolumn + 1, yytext());
             }
             // fall through
           case 65: break;

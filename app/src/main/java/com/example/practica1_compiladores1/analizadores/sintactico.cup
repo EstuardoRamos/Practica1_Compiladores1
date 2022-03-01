@@ -1,0 +1,147 @@
+//seccion codigo
+package com.example.practica1_compiladores1.analizadores;
+
+
+import com.example.practica1_compiladores1.MainActivity;
+
+import java.util.ArrayList;
+import java.util.Stack;
+
+import graficas.GraficaBarra;
+import graficas.GraficaPie;
+import java_cup.runtime.Symbol;
+import java_cup.runtime.XMLElement;
+import java_cup.runtime.lr_parser;
+parser code {:
+	
+	public Sintactico(CounterLexer lexer) {
+        super(lexer);
+    }
+    
+    MainActivity main = new MainActivity() ;
+	 private GraficaBarra graficaBarra = new GraficaBarra();
+	 private GraficaPie graficaPie = new GraficaPie();
+	 private ArrayList<GraficaBarra> graficasBarraCorrec = new ArrayList<>();
+	 private ArrayList<GraficaPie> graficasPieCorrec = new ArrayList<>();
+int aaa;
+
+:}
+
+// terminales
+terminal SUMA, RESTA, MULTIPLICACION, DIVISION, PARENTESIS_ABRE, PARENTESIS_CIERRA, DOS_PUNTOS, PUNTO_COMA, PUNTO, PORCENTAJE, CANTIDAD,
+    LLAVE_ABRE, LLAVE_CIERRA, CORCHETE_ABRE, CORCHETE_CIERRA, COMA, IGUAL, DEF, BARRAS, PIE, TITULO, EJEX, EJEY, ETIQUETAS, VALORES,
+    UNIR, TIPO, TOTAL, EXTRA, EJECUTAR ;
+terminal String STRING;
+terminal double ENTERO, DECIMAL;
+
+
+// seccion de no terminales
+
+non terminal s, s1, s2, s3, s4,s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, expreM, expreS, numero, ep, t, tp, f;
+//non terminal double ;
+/*non terminal String s11;
+non terminal Double expresion, s12;
+precedence left SUMA, RESTA;
+precedence left MULTIPLICACION, DIVISION;*/
+
+// gramatica tipo 2
+
+//Def Barras nada ejex ejey total ;
+
+s ::= 
+	DEF s1 s
+	|s15 s 
+	|					{: System.out.println("S ES VACIA"); :}
+	| error PUNTO_COMA			{: System.out.println("error punto coma ");  :}
+    	| error s			{: System.out.println("error llave"); :}
+;
+
+s1 ::= BARRAS LLAVE_ABRE s3 LLAVE_CIERRA	{: System.out.println("Gramatica aceptada ES UNA GRAFICA DE BARRA"); graficasBarraCorrec.add(graficaBarra); :}
+    | PIE LLAVE_ABRE s2 LLAVE_CIERRA		{: System.out.println("Gramatica aceptada ES UNA GRAFIC ADE PIE"); :}
+    
+;
+
+s2 ::= TITULO DOS_PUNTOS STRING PUNTO_COMA s4
+;
+    
+s3 ::= TITULO DOS_PUNTOS STRING:titulo PUNTO_COMA s5	{: graficaBarra.setTitulo(titulo); :}
+;
+s4 ::= TIPO DOS_PUNTOS CANTIDAD PUNTO_COMA s10
+	|TIPO DOS_PUNTOS PORCENTAJE PUNTO_COMA s10
+;
+
+s5 ::= EJEX  DOS_PUNTOS s6 EJEY DOS_PUNTOS s7 s11	
+	| EJEY DOS_PUNTOS s7 EJEX  DOS_PUNTOS s6  s11
+	;
+	
+	
+//CADENAS PARA EJE X	
+s6 ::= CORCHETE_ABRE s8 CORCHETE_CIERRA PUNTO_COMA	
+;
+
+s8 ::= STRING:x 					//{: graficaBarra.agregarEjeX(x);  :}
+	|STRING:x COMA s8 				//{: graficaBarra.agregarEjeX(x);  :}
+	|
+	;
+	
+//EXPRESIONES PAPRA EJE Y ACEPTA EXPRESION SEGUIDOS DE COMA
+s7 ::= CORCHETE_ABRE s9 CORCHETE_CIERRA PUNTO_COMA
+;
+
+s9 ::= numero:n 						//{: graficaBarra.agregarEjeY(n); :}
+	| numero:n COMA s9					//{: graficaBarra.agregarEjeY(n); :}
+	|
+;
+	
+s10 ::= ETIQUETAS DOS_PUNTOS s6 VALORES DOS_PUNTOS s7 s13 EXTRA s14
+;
+
+s11 ::= UNIR DOS_PUNTOS CORCHETE_ABRE s12 CORCHETE_CIERRA PUNTO_COMA
+;
+
+s12 ::= LLAVE_ABRE ENTERO COMA ENTERO LLAVE_CIERRA
+	| LLAVE_ABRE ENTERO COMA ENTERO LLAVE_CIERRA COMA s12
+	| 
+; 
+
+s13 ::= TOTAL DOS_PUNTOS ENTERO PUNTO_COMA  s11
+	| s11
+	|
+;
+s14 ::= 
+	DOS_PUNTOS STRING PUNTO_COMA
+;
+
+s15 ::= 
+	EJECUTAR DOS_PUNTOS PARENTESIS_ABRE STRING PARENTESIS_CIERRA PUNTO_COMA		{: System.out.println("Se ejecuto una grafica"); :}
+;
+
+numero ::= 
+	ENTERO
+	| DECIMAL 
+;
+	
+expreM ::= t ep
+	|expreS MULTIPLICACION expreM
+	|expreS DIVISION expreM
+;
+ep ::= 
+	SUMA t ep
+	|RESTA t ep
+	|
+;
+
+t ::=
+	f tp
+;
+
+tp ::=
+	MULTIPLICACION f tp
+	|DIVISION f tp
+	|
+;
+
+f ::= PARENTESIS_ABRE expreM PARENTESIS_CIERRA
+	| numero
+;
+	
